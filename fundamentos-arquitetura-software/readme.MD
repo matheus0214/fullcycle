@@ -125,3 +125,64 @@ Há empresas que apesar de não possuírem o cargo de arquiteto(a) de software, 
 - Confiabilidade e segurança
 - Robustes
 - Escalabilidade
+
+#### Características Estruturais
+
+- Configurável
+- Extensibilidade
+- Fácil instalação
+- Reuso de componentes
+- Internacionalização
+- Fácil manutenção
+- Portabilidade (diversos bancos de dados)
+- Fácil suport (logs, debugging)
+
+#### Características Cross-Cutting
+
+- Acessibilidade
+- Processo de retenção e recuperação de dados (quanto tempo os dados serão mantidos)
+- Autenticação e Autorização
+- Legal
+- Privacidade
+- Segurança
+- Usabilidade
+
+### Prespectivas para arquiteturar software de qualidade
+
+- Performace
+- Escalabilidade
+- Resiliência
+
+#### Performace
+
+- É o desempenho que um software possui para completar um determinado workload
+- As unidades de medida para avaliarmos a performace de um software são:
+  - Latência ou "response time"
+  - Throughput
+- Ter um software performático é diferente de ter um software escalável
+
+##### Métricas para medir a performace
+
+- Diminuindo a latência
+  - Normalmente medida em milliseconds
+  - É afetada pelo tempo de processamento da aplicação, rede e chamadas externas
+- Aumento de throughtput
+  - Quantidade de requisições
+  - Diretamente ligado a latência
+
+##### Principais razões para baixa performance
+
+- Processamento ineficiente
+- Recursos computacionais limitados
+- Trabalhar de forma bloqueante
+- Acesso serial a recursos
+
+##### Principais formas para aumentar a eficiência
+
+- Escala da capacidade computacional(CPU, Disco, Memória, Rede)
+- Lógica por trás de software(Algoritmos, queries, overhead de frameworks)
+- Concorrência e paralelismo
+- Banco de dados(tipos de bancos, schema)
+- Caching
+
+##### Capacidade computacional: Escala vertical vs horizontal
