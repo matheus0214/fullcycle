@@ -186,3 +186,43 @@ Há empresas que apesar de não possuírem o cargo de arquiteto(a) de software, 
 - Caching
 
 ##### Capacidade computacional: Escala vertical vs horizontal
+
+- Escala Vertical -> Aumentar a capacidade computacional
+- Escala Horizontal -> Aumentar a quantidade de maquinas
+
+##### Diferença entre concorrência e paralelismo
+
+"Concorrência é sobre lidar com muitas coisas ao mesmo tempo. Paralelismo é fazer muitas coisas ao mesmo tempo." Rob Pike
+
+##### Vamos imaginar um webserser
+
+- Trabalhando de forma seria - único processo
+- Atendendo 5 requestes
+
+- Forma concorrent/paralela
+- 5 threads
+- Atendendo 5 requests
+
+##### Caching
+
+- Cache na borda/Edge computing
+- Dados estáticos
+- Páginas web
+- Funções internas
+  - Evita reprocessamento de algoritmos pesados
+- Objetos
+
+###### Caching: Exclusivo vs Compartilhado
+
+- Exclusivo
+  - Baixa latência
+  - Duplicado entre os nós
+  - Problemas relacionados a sessões
+- Compartilado
+  - Maior latência
+  - Não há duplicação
+  - Sessões compartilhadas
+  - Banco de dados externo
+    - MySQL
+    - Redis
+    - Memcache
