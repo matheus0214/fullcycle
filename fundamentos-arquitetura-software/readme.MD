@@ -79,3 +79,49 @@ Há empresas que apesar de não possuírem o cargo de arquiteto(a) de software, 
 - Tomar decisões com mais confiança
 
 ### Arquitetura vs Design
+
+- Arquitetura: Escopo global ou alto nível
+- Design: Escopo local
+
+### Sustentabilidade
+
+- Desenvolver um software é caro
+- Software resolve uma "dor"
+- Software precisa se pagar ao longo do tempo
+- Acompanhar a evolução do negócio
+- Quanto mais tempo um software fica no ar, mais retorno gera
+- A solução precisa ser arquitetada
+
+### Pilares da arquitetura de software
+
+- Estruturação
+  - Fácil evolução, componentização para atender os objetivos de negócio
+- Componentização
+- Relacionamento entre sistemas
+- Governança
+
+### Requisitos arquiteturais (RAs)
+
+- Performace
+- Armazenamento de dados
+- Escalabilidade
+- Segurança
+- Legal
+- Audit
+- Marketing
+
+### Características arquiteturais
+
+- Operacionais
+- Estruturais
+- Cross-Cutting
+
+#### Características Operacionais
+
+- Disponibilidade
+- Recuperação de desastres
+- Performace
+- Recuperação (Backup)
+- Confiabilidade e segurança
+- Robustes
+- Escalabilidade
