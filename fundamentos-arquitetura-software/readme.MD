@@ -218,7 +218,7 @@ Há empresas que apesar de não possuírem o cargo de arquiteto(a) de software, 
   - Baixa latência
   - Duplicado entre os nós
   - Problemas relacionados a sessões
-- Compartilado
+- Compartilhado
   - Maior latência
   - Não há duplicação
   - Sessões compartilhadas
@@ -226,3 +226,107 @@ Há empresas que apesar de não possuírem o cargo de arquiteto(a) de software, 
     - MySQL
     - Redis
     - Memcache
+
+##### Caching: Edge computing
+
+- Cache realizado mais próximo ao usuário
+- Evita a requisição chegar até o Cloud Provider/Infra
+- Normalmente arquivos estáticos
+- CDN - Content Delivery Network
+- Cloudflare workers
+- Vercel
+- Akamai
+
+### Escalabilidade
+
+Escalabilidade é a capacidade de sistemas suportarem o aumento (ou a redução) dos workloads incrementando (ou reduzindo) o custo em menor ou igual proporção.
+
+#### Escalabilidade vs Performace
+
+Enquanto performace tem o foco em reduzir a latência e aumentar a throughput, a escalabilidade visa termos a possibilidade de aumentar ou diminuir o throughput adicionando ou removendo a capacidade computacional.
+
+#### Escalando software - Descentralizaçao
+
+- Disco efêmero
+- Servidor de aplicação vs Servidor de assets
+- Cache centralizado
+- Sessões centralizadas
+- Upload/Gravação de arquivos
+
+#### Escala de banco de dados
+
+- Aumentando recursos computacionais
+- Distribuindo responsabilidades (escrita vs leitura)
+- Shards de forma horizontal
+- Severless
+
+#### Otimização de queries e índices
+
+- Trabalhe com índices de forma consciente
+- APM (Application performance monitoring) nas queries
+- Explain na queries
+- CQRS (Command Query Responsibility Segregation)
+
+#### Proxy reverso
+
+Um proxy reverso é um servidor que fica na frente dos servidores web e encaminha as solicitações do cliente (por exemplo, navegador web) para esses servidores web.
+
+##### Soluções populares de Proxy Reverso
+
+- Nginx
+- HAProxy (HA = High Availability)
+- Traefik
+
+### Resiliência
+
+- Resiliência é um conjunto de estratégias adotadas intencionalmente para a adaptação de um sistema quando uma falha ocorre.
+- Ter estratégias de resiliência nos possibilita minimizar os riscos de perda de dados e transações importantes para o negócio.
+
+#### Proteger e ser Protegido
+
+- Um sistema em uma arquitetura distribuída precisa adotar mecanismos de autopreservação para garantir ao máximo sua operação com qualidade.
+- Um sistema não pode ser "egoísta" ao ponto de realizar mais requisições em um sistema que está falhando.
+- Um sistema lento no ar muitas vezes é pior do que um sistema fora do ar. (Efeito dominó)
+
+#### Health check
+
+- Sem sinais vitais, não é possível saver a "saúde" de um sistema
+- Um sistema que não está saudável possui uma chance de se recuperar caso o tráfego para de ser direcionado a ele temporariamente.
+- Health check de qualidade
+
+#### Rate Limiting
+
+- Protege o sistema baseado no que ele foi projetado para suportar
+- Preferência programada por tipo de client
+
+#### Circuit breaker
+
+- Protege o sistema fazendo com que as reuisições feitas para ele sejam negadas. EX: 500
+- Circuito fechado = Requisições chegam normalmente
+- Circuito aberto = Requisições não chegam ao sistema. Error instantâneo ao client
+- Meio aberto = Permite uma quantidade limitada de requisições para verificação se o sistema tem condições de voltar ao ar integralmente
+
+### API Gateway
+
+- Garante que requisições "inapropriadas" cheguem até o sistema: Ex. usuário não autenticado
+- Implementa políticas de Rate Limiting, Health check, etc.
+
+### Service Mesh
+
+- Controla o tráfego de rede
+- Evita implementações de proteção pelo próprio sistema
+- mTLS
+- Circuit breaker, retry, timeout, fault injection, etc.
+
+### Trabalhar de forma assíncrona
+
+- Evitar perda de dados
+- Não há perda de dados no envio de uma transação se o server estiver fora
+- Servidor pode processar a transação em seu tempo quando estiver online
+
+### Situações complexas
+
+- O que acontece se o message broker cair?
+- Haverá perda de mensagens?
+- Seu sistema ficará fora do ar?
+- Como garantir resiliência?
