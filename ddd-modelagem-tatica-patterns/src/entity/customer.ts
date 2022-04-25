@@ -1,13 +1,14 @@
+import { Address } from "./address";
+
 class Customer {
   _id: string;
   _name: string;
-  _address: string;
+  _address: Address;
   _active: boolean;
 
-  constructor(id: string, name: string, address: string) {
+  constructor(id: string, name: string) {
     this._id = id;
     this._name = name;
-    this._address = address;
 
     this.validate();
   }
@@ -27,15 +28,21 @@ class Customer {
   }
 
   activate() {
-    if (this._address.length <= 0) {
-      throw new Error("Address is a mandatory to active customer");
+    if (!!this._address) {
+      throw new Error("Address is a mandatory field to active customer");
     }
+
     this._active = true;
   }
 
   deactivate() {
     this._active = false;
   }
+
+  set address(newAddress: Address) {
+    this._address = newAddress;
+  }
 }
 
-const customer = new Customer("", "Charlotte Byrd", "781 Sosib Park");
+const customer = new Customer("", "Charlotte Byrd");
+customer.address = new Address("Lathi Heights", 1817, "MF", "Rijogo");
