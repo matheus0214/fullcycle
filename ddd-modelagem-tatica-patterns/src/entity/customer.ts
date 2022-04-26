@@ -1,6 +1,6 @@
 import { Address } from "./address";
 
-class Customer {
+export class Customer {
   _id: string;
   _name: string;
   _address: Address;
@@ -43,6 +43,3 @@ class Customer {
     this._address = newAddress;
   }
 }
-
-const customer = new Customer("", "Charlotte Byrd");
-customer.address = new Address("Lathi Heights", 1817, "MF", "Rijogo");
