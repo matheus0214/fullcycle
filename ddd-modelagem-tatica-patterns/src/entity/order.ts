@@ -10,4 +10,8 @@ export class Order {
     this._customerId = customerId;
     this._items = items;
   }
+
+  total(): number {
+    return this._items.reduce((acc, current) => acc + current.price, 0);
+  }
 }
