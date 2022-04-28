@@ -10,6 +10,7 @@
     "typescript": "^4.6.3"
   },
   "scripts": {
-    "test": "jest --coverage"
+    "test": "npm run tsc -- --noEmit && jest --coverage",
+    "tsc": "tsc"
   }
 }
