@@ -62,4 +62,14 @@ describe("Customer unit tests", () => {
 
     expect(customer.isActive()).toBeFalsy();
   });
+
+  it("should add new rewardPoints", () => {
+    const customer = new Customer("123", "Craig Fletcher");
+
+    expect(customer.rewardPoints).toEqual(0);
+
+    customer.addRewardPoints(10);
+
+    expect(customer.rewardPoints).toEqual(10);
+  });
 });

@@ -22,3 +22,16 @@ Entidade = IDENTIDADE
 ## Agregados
 
 "Um agregado é um conjunto de objetos associados que tratamos como uma unidade para propósito de mudança de dados"
+
+## Domain Services
+
+A Service in the domain is a stateless operation that fulfills a domain-specific task. Often the best indication that you should create a Service in the domain model is when the operation you need to perform feels out of place as a method on an Aggregate (10) or a Value Object.
+
+- Uma entidade pode realizar uma ação que vai afetar todas as entidades?
+- Como realizar uma operação em lote?
+- Como calcular algo cujas as informações constam em mais de uma entidade?
+
+### Cuidados
+
+- Quando houver muitos Domain Services em seu projeto, TALVEZ, isso pode indicar que seus agregados estão anêmicos.
+- Domain Services são Stateless
