@@ -37,7 +37,7 @@ describe("Customer unit tests", () => {
 
   it("should activate customer", () => {
     const customer = new Customer("123", "Craig Fletcher");
-    customer.address = new Address("Lathi Heights", 1817, "MF", "Rijogo");
+    customer.changeAddress(new Address("Lathi Heights", 1817, "MF", "Rijogo"));
     expect(() => {
       customer.activate();
     }).not.toThrowError("Address is a mandatory field to active customer");
@@ -55,7 +55,7 @@ describe("Customer unit tests", () => {
 
   it("should deactivate customer", () => {
     const customer = new Customer("123", "Craig Fletcher");
-    customer.address = new Address("Lathi Heights", 1817, "MF", "Rijogo");
+    customer.changeAddress(new Address("Lathi Heights", 1817, "MF", "Rijogo"));
     expect(() => {
       customer.deactivate();
     }).not.toThrowError();

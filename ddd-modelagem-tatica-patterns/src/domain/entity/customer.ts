@@ -29,6 +29,10 @@ export class Customer {
     this.validate();
   }
 
+  changeAddress(newAddress: Address) {
+    this._address = newAddress;
+  }
+
   activate() {
     if (!!!this._address) {
       throw new Error("Address is a mandatory field to active customer");
@@ -45,8 +49,8 @@ export class Customer {
     return this._id;
   }
 
-  set address(newAddress: Address) {
-    this._address = newAddress;
+  get address(): Address {
+    return this._address;
   }
 
   get name(): string {
