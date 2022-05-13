@@ -16,7 +16,10 @@ export class Order {
   }
 
   total(): number {
-    return this._items.reduce((acc, current) => acc + current.price, 0);
+    return this._items.reduce(
+      (acc, current) => acc + current.price * current.quantity,
+      0
+    );
   }
 
   validate(): boolean {
@@ -37,5 +40,21 @@ export class Order {
     }
 
     return true;
+  }
+
+  addItem(newItem: OrderItem) {
+    this._items.push(newItem);
+  }
+
+  get id(): string {
+    return this._id;
+  }
+
+  get customerId(): string {
+    return this._customerId;
+  }
+
+  get items(): OrderItem[] {
+    return this._items;
   }
 }

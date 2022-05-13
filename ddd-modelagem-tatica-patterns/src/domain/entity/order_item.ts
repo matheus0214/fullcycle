@@ -14,9 +14,9 @@ export class OrderItem {
   ) {
     this._id = id;
     this._name = name;
-    this._price = price;
     this._productId = productId;
     this._quantity = quantity;
+    this._price = price;
 
     this.validate();
   }
@@ -27,11 +27,23 @@ export class OrderItem {
     }
   }
 
+  get id(): string {
+    return this._id;
+  }
+
+  get name(): string {
+    return this._name;
+  }
+
   get price(): number {
-    return this._price * this._quantity;
+    return this._price;
   }
 
   get quantity(): number {
     return this._quantity;
+  }
+
+  get productId(): string {
+    return this._productId;
   }
 }
