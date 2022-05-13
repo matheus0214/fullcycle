@@ -41,3 +41,34 @@ A Service in the domain is a stateless operation that fulfills a domain-specific
 Um repositório comumente se refete a um local de armazenamento, geralmente considerado um local de segurança um local de segurança ou preservação dos itens nele armazenados. Quando você armazena algo em um repositório e depois retorna para recuperálo, você espera que ele esteja no mesmo estado que estava quando você o colocou lá. Em algum momento, você pode optar por remover o item armazenado do repositório.
 
 Esses objetos semelhantes a coleções são sobre persistência. Todo tipo Agregado persistente terá um Repositório. De um modo geral, existe uma relação um-para-um entre um tipo Agregado e um Repositório.
+
+## Domain Events
+
+"Use um evento de domínio para capturar uma ocorrência de algo que aconteceu no domínio."
+
+"A essência de um evento de domínio é que você o usa para capturar coisas que podem desencadear uma mudança no estado do aplicativo que você está desenvolvendo. Esses objetos de eventos são processados para causar alterações no sistema e armazenados para fornecer um AuditLog."
+
+Todo evento deve ser representado em uma ação realizada no passado:
+
+- UserCreated
+- OrderPlaced
+- EmailSent
+
+### Quando utilizar
+
+Normalmente um Domain Event deve ser utilizado quando queremos notificar outros Bounded Contexts de uma mudança de estado.
+
+### Componentes
+
+- Event
+- Handler: Executa o processamento quando um evento é chamado
+- Event Dispatcher: Responsável por armazenar e executar os handlers de um evento quando ele for disparado
+
+### Dinâmica
+
+- Criar um "Event Dispatcher"
+- Criar um "Evento"
+- Criar um "Hanlder" para o "Evento"
+- Registrar o Evento, juntamente com o Hanlder no "Event Dispatcher"
+
+Agora para disparar um evento, basta executar o método "notify" do "Event Dispatcher". Nesse momento todos o Handlers registrados no evento serão executados.
