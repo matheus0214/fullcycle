@@ -1,6 +1,6 @@
 import { IProduct } from "./product.interface";
 
-export class Product implements IProduct {
+export class ProductB implements IProduct {
   private _id: string;
   private _name: string;
   private _price: number;
@@ -48,6 +48,6 @@ export class Product implements IProduct {
   }
 
   get price(): number {
-    return this._price;
+    return this._price * 2;
   }
 }

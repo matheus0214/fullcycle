@@ -82,3 +82,7 @@ Em um contexto DDD, módulos em sue modelo servem como contêineres nomeados par
 - Um ou mais agregado devem estar juntos somente se fazem sentido
 - Organizado pelo domínio/subdomínio e não pelo tipo de objetos
 - Devem respeitar a mesma divisão quando estão em camadas diferentes
+
+## Factories
+
+Desloque a responsabilidae de criar instâncias de objetos complexos e AGREGADOS para um objeto separado, que pode nçao ter responsabilidades no modelo de domínio, mas ainda faz parte do design do domínio. Forneça uma interface que encapsule toda a criação complexa e que não exija que o cliente faça referência ás classes concretas dos objetos que estão sendo instanciados. Crie AGGREGATES inteiros de uma única vez, reforçando suas invariantes.
