@@ -1,13 +1,15 @@
+import { Entity } from "../../@shared/entity/entity.abstract";
+import { NotificationError } from "../../@shared/notification/notification.error";
 import { Address } from "../value-object/address";
 
-export class Customer {
-  private _id: string;
+export class Customer extends Entity {
   private _name: string;
   private _address: Address;
   private _active: boolean;
   private _rewardPoints: number = 0;
 
   constructor(id: string, name: string) {
+    super();
     this._id = id;
     this._name = name;
 
@@ -16,11 +18,21 @@ export class Customer {
 
   validate() {
     if (this._name.length <= 0) {
-      throw new Error("Name is required");
+      this._notification.addError({
+        context: "customer",
+        message: "Name is required",
+      });
     }
 
     if (this._id.length <= 0) {
-      throw new Error("Id is required");
+      this._notification.addError({
+        context: "customer",
+        message: "Id is required",
+      });
+    }
+
+    if (this._notification.hasErrors()) {
+      throw new NotificationError(this._notification.getErrors());
     }
   }
 
@@ -31,12 +43,18 @@ export class Customer {
 
   changeAddress(newAddress: Address) {
     this._address = newAddress;
+    this.validate();
   }
 
   activate() {
     if (!!!this._address) {
-      throw new Error("Address is a mandatory field to active customer");
+      this._notification.addError({
+        context: "customer",
+        message: "Address is a mandatory field to active customer",
+      });
     }
+
+    this.validate();
 
     this._active = true;
   }

@@ -5,7 +5,13 @@ describe("Customer unit tests", () => {
   it("should throw error when id is empty", () => {
     expect(() => {
       new Customer("", "Katie Roberson");
-    }).toThrowError("Id is required");
+    }).toThrowError("customer: Id is required");
+  });
+
+  it("should throw error when id is empty", () => {
+    expect(() => {
+      new Customer("", "");
+    }).toThrowError("customer: Name is required,customer: Id is required");
   });
 
   it("should be able to get user id", () => {
@@ -16,14 +22,14 @@ describe("Customer unit tests", () => {
   it("should throw error when name is empty", () => {
     expect(() => {
       new Customer("123", "");
-    }).toThrowError("Name is required");
+    }).toThrowError("customer: Name is required");
   });
 
-  it("should change name if is valid", () => {
+  it("should change name if is valid name", () => {
     const customer = new Customer("123", "Craig Fletcher");
     expect(() => {
       customer.changeName("Ola Webb");
-    }).not.toThrowError("Name is required");
+    }).not.toThrowError("customer: Name is required");
 
     expect(customer.name).toEqual("Ola Webb");
   });
@@ -32,7 +38,7 @@ describe("Customer unit tests", () => {
     expect(() => {
       const customer = new Customer("123", "Craig Fletcher");
       customer.changeName("");
-    }).toThrowError("Name is required");
+    }).toThrowError("customer: Name is required");
   });
 
   it("should activate customer", () => {
@@ -40,7 +46,9 @@ describe("Customer unit tests", () => {
     customer.changeAddress(new Address("Lathi Heights", 1817, "MF", "Rijogo"));
     expect(() => {
       customer.activate();
-    }).not.toThrowError("Address is a mandatory field to active customer");
+    }).not.toThrowError(
+      "customer: Address is a mandatory field to active customer"
+    );
 
     expect(customer.isActive()).toBeTruthy();
   });
@@ -50,7 +58,9 @@ describe("Customer unit tests", () => {
 
     expect(() => {
       customer.activate();
-    }).toThrowError("Address is a mandatory field to active customer");
+    }).toThrowError(
+      "customer: Address is a mandatory field to active customer"
+    );
   });
 
   it("should deactivate customer", () => {
