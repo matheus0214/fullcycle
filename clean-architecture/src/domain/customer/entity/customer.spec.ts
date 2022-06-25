@@ -8,10 +8,10 @@ describe("Customer unit tests", () => {
     }).toThrowError("customer: Id is required");
   });
 
-  it("should throw error when id is empty", () => {
+  it("should throw error when id and name is empty", () => {
     expect(() => {
       new Customer("", "");
-    }).toThrowError("customer: Name is required,customer: Id is required");
+    }).toThrowError("customer: Id is required,customer: Name is required");
   });
 
   it("should be able to get user id", () => {
