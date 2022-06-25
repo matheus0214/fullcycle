@@ -67,8 +67,6 @@ describe("E2E test for customer", () => {
 
     const listResponse = await request(app).get("/customer").send();
 
-    console.log(listResponse.body);
-
     expect(listResponse.status).toBe(200);
     expect(listResponse.body.customers.length).toBe(2);
 
@@ -81,5 +79,15 @@ describe("E2E test for customer", () => {
 
     expect(customerJame.name).toEqual("Jane");
     expect(customerJame.address.street).toEqual("Street 2");
+
+    const listResponseXML = await request(app)
+      .get("/customer")
+      .set("Accept", "application/xml")
+      .send();
+
+    expect(listResponseXML.status).toBe(200);
+    expect(listResponseXML.text).toContain(
+      `<?xml version="1.0" encoding="UTF-8"?>`
+    );
   });
 });
